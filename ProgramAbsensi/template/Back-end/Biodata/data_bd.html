@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Data Biodata Guru</h1>
+        <a href="/tambahbd/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-download fa-sm text-white-50"></i> Tambah Data </a>
+    </div>
+    <div class="card shadow mb-4">
+        {% for message in messages %}
+            {% if message %}
+            <div style="border-top-right-radius: 0.35rem; border-top-left-radius: 0.35rem;" class="notif text-gray-100 bg-success py-auto">
+                <div class="card-body">
+                    {{ message }}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}   
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nip</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Mapel</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Agama</th>
+                            <th>Password</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nip</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Mapel</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Agama</th>
+                            <th>Password</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for Biodata in biodata  %}
+                        <tr>
+                            <td>{{ Biodata.nip }}</td>
+                            <td>{{ Biodata.nama }}</td>
+                            <td>{{ Biodata.username }}</td>
+                            <td>{{ Biodata.mapel }}</td>
+                            <td>{{ Biodata.jk }}</td>
+                            <td>{{ Biodata.agama }}</td>
+                            <td>{{ Biodata.password }}</td>
+                            <td>{{ Biodata.alamat }}</td>
+                            <td style="display: flex;">
+                                <a href="{% url 'update_dt' Biodata.id %}" style="margin-right: 8px;" class="btn btn-info btn-circle btn-sm">
+                                    <i class="far fa-edit" style="color: #ffffff;"></i>
+                                </a>
+                                <button data-toggle="modal" data-target="#hapus{{ Biodata.id }}" style="margin-right: auto;" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="hapus{{ Biodata.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Yakin akan dihapus?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Biodata Guru : {{ Biodata.nama }}
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <a href="{% url 'hapusdt' Biodata.id %}" class="btn btn-danger">Yakin</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
