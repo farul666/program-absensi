@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+         <!-- Page Heading -->
+         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Edit Data</h1>
+        </div>
+        <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    {% for message in messages %}
+                        {% if message %}
+                        <div style="border-top-right-radius: 0.35rem; border-top-left-radius: 0.35rem;" class="notif text-gray-100 bg-success py-auto">
+                            <div class="card-body">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}    
+                    <form action="{% url 'update_dt' biodatas.id %}" style="margin: 40px;" method="POST">
+                        {% csrf_token %}
+                        {{form.as_table}}
+                        <div class="btn-simpan my-4" style="display: flex;">
+                            <a href="/biodata/" style="margin-right: auto;" class="btn btn-danger">
+                                <span class="text">Kembali</span>
+                            </a>
+                            <button type="submit" class="btn btn-success btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                <span class="text">Simpan</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    
+{% endblock %}
