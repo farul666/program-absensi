@@ -7,4 +7,11 @@ class kolomdata(admin.ModelAdmin):
     list_filter = ('nama',)
     list_per_page = 7
 
+class kolomdatapulang(admin.ModelAdmin):
+    list_display = ['nama','tgl','status']
+    search_fields = ['nip','nama']
+    list_filter = ('nama',)
+    list_per_page = 7
+
 admin.site.register(Presensi,kolomdata)
+admin.site.register(PresensiPulang,kolomdatapulang)
