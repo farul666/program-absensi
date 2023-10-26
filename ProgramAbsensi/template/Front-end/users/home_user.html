@@ -1,0 +1,80 @@
+{% extends 'Front-end/users/base_user.html' %}
+{% load static %}
+{% block isi %}
+    <div class="container">
+        <div class="home">
+            <h2>Presensi</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered scroll" id="dataTable" width="auto" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Waktu Masuk</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Presensi in presensi  %}
+                        <tr>
+                            <td>{{ Presensi.nama }}</td>
+                            <td>{{ Presensi.tgl }}</td>
+                            <td>{{ Presensi.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="home">
+            <h2>Perizinan</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered scroll" id="dataTable" width="auto" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>keterangan</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Perizinan in perizinan  %}
+                        <tr>
+                            <td>{{ Perizinan.nama }}</td>
+                            <td>{{ Perizinan.keterangan }}</td>
+                            <td>{{ Perizinan.Tanggal }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="home">
+            <h2>Absensi</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered scroll" id="dataTable" width="auto" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for Absen in absen %}
+                        <tr>
+                            <td>{{ Absen.nama }}</td>
+                            <td>{{ Absen.tgl }}</td>
+                            <td>{{ Absen.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
