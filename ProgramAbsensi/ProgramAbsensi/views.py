@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from absensi.models import Absen
 from biodata.models import Biodata
-from presensi.models import Presensi
+from presensi.models import *
 from perizinan.models import Perizinan
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
@@ -12,12 +12,14 @@ def index(request):
     jml_absen=Absen.objects.count()
     jml_bio=Biodata.objects.count()
     jml_pre=Presensi.objects.count()
+    jml_pre_plg=PresensiPulang.objects.count()
     jml_izin=Perizinan.objects.count()
 
     konteks={
         'jml_absen':jml_absen,
         'jml_bio':jml_bio,
         'jml_pre':jml_pre,
+        'jml_pre_plg':jml_pre_plg,
         'jml_izin':jml_izin
     }
     return render(request,'index.html',konteks)

@@ -23,6 +23,7 @@ from biodata.views import *
 from perizinan.views import *
 from presensi.views import *
 from rekapitulasi.views import *
+from users.views import *
 
 urlpatterns = [
     # Route untuk Biodata
@@ -51,6 +52,11 @@ urlpatterns = [
     path('tambahpre/',tambahpresensi),
     path('hapuspre/<int:id_presensi>',hapuspresensi,name='hapuspresensi'),
 
+    #CRUD presensi Pulang
+    path('presensipulang/',presensipulang),
+    path('tambahpreplg/',tambahpresensipulang),
+    path('hapuspreplg/<int:id_presensi>',hapuspresensipulang,name='hapuspresensi'),
+
     # CRUD Laporan
     path('laporan/',rekap_data),
     # path('cetaklpr',cetaklpr),
@@ -63,4 +69,11 @@ urlpatterns = [
     # Path dibawah ini berfungsi untuk memasukkan urls pada app authentication
     path('',include('django.contrib.auth.urls')),
 
+    # Path User
+    path('user/',homeuser),
+    path('presensiuser/',presensiuser),
+    path('presensipulanguser/',presensipulanguser),
+    path('absensiuser/',absensiiuser),
+    path('perizinanuser/',perizinanuser),
+    
 ]
